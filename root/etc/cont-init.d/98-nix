@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bash
+
+echo "**** installing nix ****"
+
+# Determine if setup is needed
+if [ ! -f /nix ] 
+then
+  echo "Nix not installed, installing it now"
+  #apt-get install --no-install-recommends -y curl gcc gcc-multilib
+  s6-setuidgid abc sh <(curl -L https://nixos.org/nix/install) --no-daemon
+else
+  echo "Nix already installed"
+fi

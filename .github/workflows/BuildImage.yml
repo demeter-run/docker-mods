@@ -3,8 +3,8 @@ name: Build Image
 on: [push, pull_request, workflow_dispatch]
 
 env:
-  ENDPOINT: "user/endpoint"
-  BRANCH: "master"
+  ENDPOINT: "demeter-run/docker-mods-nix"
+  BRANCH: "nix"
 
 jobs:
   build:
