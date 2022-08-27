@@ -6,8 +6,14 @@ echo "**** installing nix ****"
 if [ ! -f /nix ] 
 then
   echo "Nix not installed, installing it now"
+  mkdir /nix
+  chown -R abc /nix
+  echo "sandbox = false" > /etc/nix/nix.conf
   #apt-get install --no-install-recommends -y curl gcc gcc-multilib
-  s6-setuidgid abc sh <(curl -L https://nixos.org/nix/install) --no-daemon
+  curl -L https://nixos.org/nix/install > install.sh
+  chmod +x install.sh
+  s6-setuidgid abc sh ./install.sh --no-daemon
+  rm install.sh
 else
   echo "Nix already installed"
 fi
