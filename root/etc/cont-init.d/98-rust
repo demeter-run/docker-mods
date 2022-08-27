@@ -6,7 +6,7 @@ echo "**** installing rust dev environment using abc ****"
 if [ ! -f /config/.cargo ] 
 then
   echo "Rust not installed, installing it now"
-  apt-get install --no-install-recommends -y curl gcc
+  apt-get install --no-install-recommends -y curl gcc gcc-multilib
   s6-setuidgid abc curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | s6-setuidgid abc sh -s -- -y
 else
   echo "Rust already installed"
