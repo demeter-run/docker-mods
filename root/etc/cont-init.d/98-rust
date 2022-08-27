@@ -1,13 +1,13 @@
 #!/usr/bin/with-contenv bash
 
-echo "**** installing rust dev environment ****"
+echo "**** installing rust dev environment using abc ****"
 
 # Determine if setup is needed
 if [ ! -f /config/.cargo ] 
 then
   echo "Rust not installed, installing it now"
   apt-get install --no-install-recommends -y curl gcc
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  s6-setuidgid abc curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 else
   echo "Rust already installed"
 fi
